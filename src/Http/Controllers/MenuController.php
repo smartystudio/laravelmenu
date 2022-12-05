@@ -5,14 +5,14 @@ namespace SmartyStudio\LaravelMenu\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use SmartyStudio\LaravelMenu\Facades\Menu;
-use SmartyStudio\LaravelMenu\Models\Menu;
+use SmartyStudio\LaravelMenu\Models\Menu as MenuModel;
 use SmartyStudio\LaravelMenu\Models\MenuItem;
 
 class MenuController extends Controller
 {
     public function createNewMenu(Request $request)
     {
-        $menu = new Menu();
+        $menu = new MenuModel();
         $menu->name = $request->input('name');
         $menu->class = $request->input('class', null);
         $menu->save();
@@ -22,7 +22,7 @@ class MenuController extends Controller
 
     public function destroyMenu(Request $request)
     {
-        $menudelete = Menu::findOrFail($request->input('id'));
+        $menudelete = MenuModel::findOrFail($request->input('id'));
         $menudelete->delete();
 
         return response()->json(['resp' => 'You delete this item'], 200);
@@ -30,7 +30,7 @@ class MenuController extends Controller
 
     public function generateMenuControl(Request $request)
     {
-        $menu = Menu::findOrFail($request->input('idMenu'));
+        $menu = MenuModel::findOrFail($request->input('idMenu'));
         $menu->name = $request->input('menuName');
         $menu->class = $request->input('class', null);
         $menu->save();
