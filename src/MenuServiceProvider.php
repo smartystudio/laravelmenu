@@ -4,7 +4,7 @@ namespace SmartyStudio\LaravelMenu\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
-use SmartyStudio\LaravelMenu\Menu;
+use SmartyStudio\LaravelMenu\Helpers\Menu;
 
 class MenuServiceProvider extends ServiceProvider
 {
@@ -21,7 +21,7 @@ class MenuServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../../../', 'smartystudio/laravelmenu');
         
-        $this->publishes([__DIR__ . '/../../config/Laravelmenu.php'  => config_path('menu.php'),], 'config');
+        $this->publishes([__DIR__ . '/../../config/laravelmenu.php'  => config_path('laravelmenu.php'),], 'config');
         $this->publishes([__DIR__ . '/../../resources/views' => resource_path('views/vendor/smartystudio/laravelmenu'),], 'views');
         $this->publishes([__DIR__ . '/../../public' => public_path('vendor/smartystudio/laravelmenu'),], 'public');
         $this->publishes([

@@ -10,21 +10,29 @@ class MenuItem extends Model
     protected $table = null;
 
     protected $fillable = [
-        'label', 'link', 'parent',
-        'sort', 'class', 'menu',
-        'depth', 'role_id', 'icon', 'target'
+        'label', 
+        'link', 
+        'parent',
+        'sort', 
+        'class', 
+        'menu',
+        'depth', 
+        'role_id', 
+        'icon', 
+        'target'
     ];
 
     public function __construct(array $attributes = [])
     {
         // parent::construct( $attributes );
-        $this->table = config('menu.table_prefix') . config('menu.table_name_items');
+        $this->table = config('laravelmenu.table_prefix') . config('laravelmenu.table_name_items');
     }
 
     public function getsons($id)
     {
         return $this->where('parent', $id)->get();
     }
+    
     public function getall($id)
     {
         return $this->where('menu', $id)->orderBy('sort', 'asc')->get();

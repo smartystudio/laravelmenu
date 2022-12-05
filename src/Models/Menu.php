@@ -11,7 +11,7 @@ class Menu extends Model
     public function __construct(array $attributes = [])
     {
         // parent::construct( $attributes );
-        $this->table = config('menu.table_prefix') . config('menu.table_name_menus');
+        $this->table = config('laravelmenu.table_prefix') . config('laravelmenu.table_name_menus');
     }
 
     public static function byName($name)

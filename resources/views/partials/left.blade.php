@@ -39,7 +39,7 @@
             ];
         @endphp
 
-        @include('smartystudio-menu::accordions.default', [
+        @include('menu::accordions.default', [
             'name' => 'Pages', 
             'urls' => $pages, 
             'show' => true
@@ -76,7 +76,7 @@
             ];
         @endphp
 
-        @include('smartystudio-menu::accordions.default', ['name' => 'Categories', 'urls' => $categories])
-        @include('smartystudio-menu::accordions.add-link', ['name' => 'Add Link'])
+        @include('menu::accordions.default', ['name' => 'Categories', 'urls' => $categories])
+        @include('menu::accordions.add-link', ['name' => 'Add Link'])
     </div>
 @endif

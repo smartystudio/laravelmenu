@@ -7,6 +7,7 @@ Route::group([
     'middleware' => config('laravelmenu.middleware'),
     'prefix'     => config('laravelmenu.route_prefix'),
     'namespace'  => 'SmartyStudio\LaravelMenu\Http\Controllers',
+    'as'         => 'menu.'
 ], function () {
     Route::post('delete-item', [MenuController::class, 'destroyItem'])->name('delete-item');
     Route::post('update-item', [MenuController::class, 'updateItem'])->name('update-item');

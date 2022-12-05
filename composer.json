@@ -1,11 +1,15 @@
 {
   "name": "smartystudio/laravelmenu",
   "description": "Drag and drop menu generator for Laravel.",
+  "homepage": "https://smartycms.net",
   "keywords": [
-    "Laravel",
-    "Menu",
-    "Bootstrap",
-    "Builder"
+    "admin",
+    "cms",
+    "crud",
+    "laravel",
+    "menu",
+    "bootstrap",
+    "builder"
   ],
   "authors": [
     {
@@ -25,16 +29,16 @@
   },
   "autoload": {
     "psr-4": {
-      "SmartyStudio\\Menu\\": "src"
+      "SmartyStudio\\LaravelMenu\\": "src"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "SmartyStudio\\Menu\\Providers\\MenuServiceProvider"
+        "SmartyStudio\\LaravelMenu\\MenuServiceProvider"
       ],
       "aliases": {
-        "Menu": "SmartyStudio\\Menu\\Facades\\Menu"
+        "Menu": "SmartyStudio\\LaravelMenu\\Facades\\Menu"
       }
     }
   },

@@ -3,7 +3,7 @@
 @endphp
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href="{{asset('vendor/smartystudio/laravelmenu/menu.css')}}" rel="stylesheet">
+<link href="{{ asset('vendor/smartystudio/laravelmenu/menu.css') }}" rel="stylesheet">
 
 <div id="smarty" class="card mt-2 mb-2">
 	<div class="card-header">
@@ -20,10 +20,10 @@
 		<input type="hidden" id="idmenu" value="{{$indmenu->id ?? null}}"/>
 		<div class="row">
 			<div class="col-md-4">
-				@include('smartystudio-menu::partials.left')
+				@include('menu::partials.left')
 			</div>
 			<div class="col-md-8">
-				@include('smartystudio-menu::partials.right')
+				@include('menu::partials.right')
 			</div>
 		</div>
 	</div>

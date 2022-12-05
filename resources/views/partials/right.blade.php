@@ -46,7 +46,7 @@
                         <div class="dd nestable-menu" id="nestable">
                             <ol class="dd-list">	
                                 @foreach($menus as $key => $m)
-                                    @include('smartystudio-menu::partials.loop-item', ['key' => $key])
+                                    @include('menu::partials.loop-item', ['key' => $key])
                                 @endforeach
                             </ol>
                         </div>
@@ -54,16 +54,12 @@
                 </div>
             </div>
         </div>
-    </div>Please see [CHANGELOG](CH
+    </div>
     @if (request()->get('menu') != 0)
         <div class="card-footer">
-            <button type="button" class="btn btn-danger btn-sm submitdelete deletion menu-delete" 
-                onclick="deleteMenu()" href="javascript:void(9)">{{ __('Delete Menu') }}
-            </button>
+            <button type="button" class="btn btn-danger btn-sm submitdelete deletion menu-delete" onclick="deleteMenu()" href="javascript:void(9)">{{ __('Delete Menu') }}</button>
             @if (isset($menus) && count($menus) > 0)
-                <button type="button" class="btn btn-info btn-sm" 
-                    onclick="updateItem()" href="javascript:void(9)">{{ __('Update All Items') }}
-                </button>
+                <button type="button" class="btn btn-info btn-sm" onclick="updateItem()" href="javascript:void(9)">{{ __('Update All Items') }}</button>
             @endif
         </div>
     @endif

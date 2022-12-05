@@ -1,8 +1,7 @@
 <?php
 
-namespace SmartyStudio\LaravelMenu;
+namespace SmartyStudio\LaravelMenu\Helpers;
 
-use App\Http\Requests;
 use SmartyStudio\LaravelMenu\Models\Menu;
 use SmartyStudio\LaravelMenu\Models\MenuItem;
 use Illuminate\Support\Facades\DB;
@@ -11,37 +10,39 @@ class Menu
 {
     public function render()
     {
-        $menu = new Menus();
+        $menu = new Menu();
+
         // $menuitems = new MenuItem();
+
         $menulist = $menu->select(['id', 'name'])->get();
         $menulist = $menulist->pluck('name', 'id')->prepend('Select menu', 0)->all();
 
-        //$roles = Role::all();
+        // $roles = Role::all();
 
         if ((request()->has('action') && empty(request()->input('menu')))|| request()->input('menu') == '0') {
-            return view('smartystudio-menu::menu-html')->with("menulist", $menulist);
+            return view('menu::menu')->with("menulist", $menulist);
         } else {
             $menu = Menu::find(request()->input('menu'));
             $menus = self::get(request()->input('menu'));
             $data = ['menus' => $menus, 'indmenu' => $menu, 'menulist' => $menulist];
             
             if (config('menu.use_roles')) {
-                $data['roles'] = DB::table(config('menu.roles_table'))->select([
-                    config('menu.roles_pk'),
-                    config('menu.roles_title_field')
+                $data['roles'] = DB::table(config('laravelmenu.roles_table'))->select([
+                    config('laravelmenu.roles_pk'),
+                    config('laravelmenu.roles_title_field')
                 ])
                     ->get();
-                $data['role_pk'] = config('menu.roles_pk');
-                $data['role_title_field'] = config('menu.roles_title_field');
+                $data['role_pk'] = config('laravelmenu.roles_pk');
+                $data['role_title_field'] = config('laravelmenu.roles_title_field');
             }
 
-            return view('smartystudio-menu::menu-html', $data);
+            return view('menu::menu', $data);
         }
     }
 
     public function scripts()
     {
-        return view('smartystudio-menu::scripts');
+        return view('menu::scripts');
     }
 
     public function select($name = "menu", $menulist = array(), $attributes = array())

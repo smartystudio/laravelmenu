@@ -8,7 +8,7 @@ class AddClassToMenuTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     *Menu
      * @return void
      */
     public function up()
