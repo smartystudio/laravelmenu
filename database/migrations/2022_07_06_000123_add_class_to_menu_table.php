@@ -13,7 +13,7 @@ class AddClassToMenuTable extends Migration
      */
     public function up()
     {
-        Schema::table(config('menu.table_prefix') . config('menu.table_name_menus'), function (Blueprint $table) {
+        Schema::table(config('laravelmenu.table_prefix') . config('laravelmenu.table_name_menus'), function (Blueprint $table) {
             $table->string('class')->nullable()->after('name');
         });
     }
@@ -25,7 +25,7 @@ class AddClassToMenuTable extends Migration
      */
     public function down()
     {
-        Schema::table(config('menu.table_prefix') . config('menu.table_name_menus'), function ($table) {
+        Schema::table(config('laravelmenu.table_prefix') . config('laravelmenu.table_name_menus'), function ($table) {
             $table->dropColumn('class');
         });
     }

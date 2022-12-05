@@ -40,8 +40,9 @@
 #smarty .card-header {
     background-color: #e9ecef;
 }
-/**
-	Fixes for boostrap 4.3.1*/
+
+/* Fixes for boostrap 4.3.1 */
+
 #smarty .card-header {
     display: block;
 }
@@ -58,9 +59,9 @@
 #smarty div[aria-expanded=true] .narrow-icon:before {
     content: "\f106"
 }
-/**
- * Nestable
- */
+
+/* Nestable */
+
 .dd-list {
     display: block;
     position: relative;
@@ -176,9 +177,7 @@
     background: #2ea8e5 !important;
 }
 
-/**
- * Nestable Draggable Handles
- */
+/* Nestable and Draggable handles */
 
 .dd3-content {
     display: block;
@@ -243,9 +242,8 @@
     background: #ddd;
 }
 
-/*
-* loading
-*/
+/* Loading */
+
 .ajax-loader {
     position: fixed;
     top: 50%;

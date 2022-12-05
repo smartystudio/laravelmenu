@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartyStudio\Menu\Facades;
+namespace SmartyStudio\LaravelMenu\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -12,6 +12,6 @@ class Menu extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'smartystudio-menu';
+        return 'menu';
     }
 }

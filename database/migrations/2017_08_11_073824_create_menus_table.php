@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenusWpTable extends Migration
+class CreateMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateMenusWpTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable(config('menu.table_prefix') . config('menu.table_name_menus'))) {
-            Schema::create(config('menu.table_prefix') . config('menu.table_name_menus'), function (Blueprint $table) {
+        if (!Schema::hasTable(config('laravelmenu.table_prefix') . config('laravelmenu.table_name_menus'))) {
+            Schema::create(config('laravelmenu.table_prefix') . config('laravelmenu.table_name_menus'), function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('name');
                 $table->timestamps();
@@ -29,6 +29,6 @@ class CreateMenusWpTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('menu.table_prefix') . config('menu.table_name_menus'));
+        Schema::dropIfExists(config('laravelmenu.table_prefix') . config('laravelmenu.table_name_menus'));
     }
 }

@@ -1,16 +1,16 @@
 <?php
 
-namespace SmartyStudio\Menu\Models;
+namespace SmartyStudio\LaravelMenu\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Menus extends Model
+class Menu extends Model
 {
     protected $table = 'menus';
 
     public function __construct(array $attributes = [])
     {
-        //parent::construct( $attributes );
+        // parent::construct( $attributes );
         $this->table = config('menu.table_prefix') . config('menu.table_name_menus');
     }
 
@@ -21,15 +21,11 @@ class Menus extends Model
 
     public function items()
     {
-        return $this->hasMany('SmartyStudio\Menu\Models\MenuItems', 'menu')
-            ->with('child')
-            ->where('parent', 0)
-            ->orderBy('sort', 'ASC');
+        return $this->hasMany(MenuItem::class, 'menu')->with('child')->where('parent', 0)->orderBy('sort', 'ASC');
     }
+    
     public function itemAndChilds()
     {
-        return $this->hasMany('SmartyStudio\Menu\Models\MenuItems', 'menu')
-            ->with('child')
-            ->orderBy('sort', 'ASC');
+        return $this->hasMany(MenuItem::class, 'menu')->with('child')->orderBy('sort', 'ASC');
     }
 }

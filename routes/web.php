@@ -1,40 +1,17 @@
 <?php
 
-Route::group([
-    'namespace' => 'SmartyStudio\Menu\Http\Controllers',
-    'middleware' => config('menu.middleware'),
-    'prefix' => config('menu.route_prefix'),
-    'as' => 'h-menu.',
-], function () {
-    /**
-     * menu items
-     */
-    Route::post('add-item', array(
-        'as' => 'add-item',
-        'uses' => 'MenuController@createItem'
-    ));
-    Route::post('delete-item', array(
-        'as' => 'delete-item',
-        'uses' => 'MenuController@destroyItem'
-    ));
-    Route::post('update-item', array(
-        'as' => 'update-item',
-        'uses' => 'MenuController@updateItem'
-    ));
+use Illuminate\Support\Facades\Route;
+use SmartyStudio\LaravelMenu\Http\Controllers\MenuController;
 
-    /**
-     * menu
-     */
-    Route::post('create-menu', array(
-        'as' => 'create-menu',
-        'uses' => 'MenuController@createNewMenu'
-    ));
-    Route::post('delete-menu', array(
-        'as' => 'delete-menu',
-        'uses' => 'MenuController@destroyMenu'
-    ));
-    Route::post('update-menu-and-items', array(
-        'as' => 'update-menu-and-items',
-        'uses' => 'MenuController@generateMenuControl'
-    ));
+Route::group([
+    'middleware' => config('laravelmenu.middleware'),
+    'prefix'     => config('laravelmenu.route_prefix'),
+    'namespace'  => 'SmartyStudio\LaravelMenu\Http\Controllers',
+], function () {
+    Route::post('delete-item', [MenuController::class, 'destroyItem'])->name('delete-item');
+    Route::post('update-item', [MenuController::class, 'updateItem'])->name('update-item');
+    Route::post('add-item', [MenuController::class, 'createItem'])->name('add-item');
+    Route::post('delete-menu', [MenuController::class, 'destroyMenu'])->name('delete-menu');
+    Route::post('update-menu-and-items', [MenuController::class, 'generateMenuControl'])->name('update-menu-and-items');
+    Route::post('create-menu', [MenuController::class, 'createNewMenu'])->name('create-menu');
 });

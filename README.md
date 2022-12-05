@@ -15,22 +15,22 @@ composer require smartystudio/laravelmenu
 2. If your Laravel version does not have package autodiscovery then add the service provider to your config/app.php file:
 
 ```php
-SmartyStudio\Menu\Providers\MenuServiceProvider::class,
+SmartyStudio\LaravelMenu\Providers\MenuServiceProvider::class,
 ```
 
 3. Add facade in the file config/app.php (optional on laravel 5.5):
 
 ```php
-'Menu' => SmartyStudio\Menu\Facades\Menu::class,
+'Menu' => SmartyStudio\LaravelMenu\Facades\Menu::class,
 ```
 
 4. Publish the config file & run the migrations.
 
 ```bash
-php artisan vendor:publish --provider="SmartyStudio\Menu\Providers\MenuServiceProvider"
+php artisan vendor:publish --provider="SmartyStudio\LaravelMenu\Providers\MenuServiceProvider"
 ```
 
-5. Configure (optional) in `config/menu.php`:
+5. Configure (optional) in `config/laravelmenu.php`:
 
 - **_CUSTOM MIDDLEWARE:_** You can add you own middleware
 - **_TABLE PREFIX:_** By default this package will create 2 new tables named "menus" and "menu_items" but you can still add your own table prefix avoiding conflict with existing table
@@ -71,8 +71,8 @@ On your view blade file
 Call the model class:
 
 ```php
-use SmartyStudio\Menu\Models\Menus;
-use SmartyStudio\Menu\Models\MenuItems;
+use SmartyStudio\LaravelMenu\Models\Menu;
+use SmartyStudio\LaravelMenu\Models\MenuItem;
 ```
 
 ## Menu Usage Example (a)
@@ -83,19 +83,19 @@ A basic two-level menu can be displayed in your blade template.
 
 ```php
 // Get menu by ID
-$menu = Menus::find(1);
+$menu = Menu::find(1);
 
 // Get menu by Name
-$menu = Menus::where('name','Test Menu')->first();
+$menu = Menu::where('name','Test Menu')->first();
 
 /**
  * Get menu by Name and the Items with eager loading.
  * This is RECOMENDED for better performance and less query calls.
  */
-$menu = Menus::where('name','Test Menu')->with('items')->first();
+$menu = Menu::where('name','Test Menu')->with('items')->first();
 
 // Get menu by ID
-$menu = Menus::where('id', 1)->with('items')->first();
+$menu = Menu::where('id', 1)->with('items')->first();
 
 // Access by Model result
 $public_menu = $menu->items;
@@ -146,7 +146,7 @@ Now inside your blade template file, place the menu using this simple example:
 ### Get Menu Items By Menu ID
 
 ```php
-use SmartyStudio\Menu\Facades\Menu;
+use SmartyStudio\LaravelMenu\Facades\Menu;
 ...
 /**
  * Parameter: Menu ID
@@ -160,7 +160,7 @@ $menuList = Menu::get(1);
 In this example, you must have a menu named _Admin_
 
 ```php
-use SmartyStudio\Menu\Facades\Menu;
+use SmartyStudio\LaravelMenu\Facades\Menu;
 ...
 /**
  * Parameter: Menu ID
@@ -171,7 +171,7 @@ $menuList = Menu::getByName('Admin');
 
 ### Customization of the menu
 
-You can edit the menu interface in `resources/views/vendor/smartystudio-menu/menu-html.blade.php`
+You can edit the menu interface in `resources/views/vendor/smartystudio/laravelmenu/menu.blade.php`
 
 ## Change log
 

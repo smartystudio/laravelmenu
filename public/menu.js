@@ -1,34 +1,35 @@
 /**
- * load loading
+ * Load loading
  */
 $(document).ajaxStart(function () {
     $("#ajax_loader").show();
 }).ajaxStop(function () {
     $("#ajax_loader").hide('slow');
 });
+
 /**
- * change label
+ * Change label
  */
 $(document).on('keyup', '.edit-menu-item-title', function () {
     var title = $(this).val();
     var index = $('.edit-menu-item-title').index($(this));
     $('.menu-item-title').eq(index).html(title);
 });
+
 /**
- * change url
+ * Change url
  */
 $(document).on('keyup', '.edit-menu-item-url', function () {
     var url = $(this).val();
     var index = $('.edit-menu-item-url').index($(this));
-    /**
-     * limit string
-     */
+    // Limit string
     var result = url.slice(0, 30) + (url.length > 30 ? "..." : "");
     $('.menu-item-link').eq(index).html(result);
 });
+
 /**
- * add item menu
- * type : default or custom
+ * Add item menu
+ * Type : default or custom
  */
 function addItemMenu(e, type) {
     let data = [];
@@ -176,9 +177,7 @@ function actualizarMenu(serialize) {
             url: URL_UPDATE_ITEMS_AND_MENU,
             type: 'POST',
             success: function (response) {
-                /**
-                 * update text option
-                 */
+                // Update text option
                 $(`select[name="menu"] option[value="${$('#idmenu').val()}"]`).html($('#menu-name').val());
             }
         });
@@ -202,7 +201,7 @@ function deleteItem(id) {
 }
 
 function deleteMenu() {
-    var r = confirm('Do you want to delete this menu ?');
+    var r = confirm('Do you want to delete this menu?');
     if (r == true) {
         $.ajax({
             dataType: 'json',
@@ -255,7 +254,7 @@ $(document).ready(function () {
         $('#nestable').nestable({
             expandBtnHTML: '',
             collapseBtnHTML: '',
-            maxDepth: 5, //number of levels an item can be nested
+            maxDepth: 5, // number of levels an item can be nested
             callback: function (l, e) {
                 updateItem();
                 actualizarMenu(l.nestable('toArray'));
