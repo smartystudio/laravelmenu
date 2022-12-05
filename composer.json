@@ -12,7 +12,7 @@
     "builder"
   ],
   "type": "library",
-  "license": "Proprietary",
+  "license": "permissive",
   "minimum-stability": "stable",
   "authors": [
     {
