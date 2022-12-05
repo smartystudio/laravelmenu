@@ -11,6 +11,9 @@
     "bootstrap",
     "builder"
   ],
+  "type": "library",
+  "license": "Proprietary",
+  "minimum-stability": "stable",
   "authors": [
     {
       "name": "Smarty Studio MBN Ltd.",
@@ -23,14 +26,25 @@
       "role": "Lead Developer"
     }
   ],
-  "require": {
-    "php": ">=7.0",
-    "illuminate/support": "5.* || 6.* || 7.* || 8.*"
+  "support": {
+    "issues": "https://smartycms.net/issues"
   },
   "autoload": {
+    "classmap": [
+        "src/database"
+    ],
     "psr-4": {
       "SmartyStudio\\LaravelMenu\\": "src"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+        "Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=7.0",
+    "illuminate/support": "5.* || 6.* || 7.* || 8.*"
   },
   "extra": {
     "laravel": {
@@ -41,7 +55,5 @@
         "Menu": "SmartyStudio\\LaravelMenu\\Facades\\Menu"
       }
     }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+  }
 }

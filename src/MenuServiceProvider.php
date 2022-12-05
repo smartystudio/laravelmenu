@@ -32,6 +32,7 @@ class MenuServiceProvider extends ServiceProvider
         // Publish all the migrations and assets (migrations, seeders, lang, views, assets)
         $this->publishes([__DIR__ . '/database/migrations/' => database_path('migrations')], 'migrations');
         $this->publishes([__DIR__ . '/resources/views' => resource_path('views/vendor/smartystudio/laravelmenu'),], 'views');
+        $this->publishes([__DIR__ . '/resources/assets/dist' => public_path('vendor/smartystudio/laravelmenu')], 'assets');
     }
 
     /**
