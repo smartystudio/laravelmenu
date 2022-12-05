@@ -12,7 +12,7 @@
     "builder"
   ],
   "type": "library",
-  "license": "permissive",
+  "license": "MIT",
   "minimum-stability": "stable",
   "authors": [
     {
