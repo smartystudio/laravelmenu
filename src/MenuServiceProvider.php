@@ -1,6 +1,6 @@
 <?php
 
-namespace SmartyStudio\LaravelMenu\Providers;
+namespace SmartyStudio\LaravelMenu;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
