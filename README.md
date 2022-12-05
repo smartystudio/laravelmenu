@@ -15,7 +15,7 @@ composer require smartystudio/laravelmenu
 2. If your Laravel version does not have package autodiscovery then add the service provider to your config/app.php file:
 
 ```php
-SmartyStudio\LaravelMenu\Providers\MenuServiceProvider::class,
+SmartyStudio\LaravelMenu\MenuServiceProvider::class,
 ```
 
 3. Add facade in the file config/app.php (optional on laravel 5.5):
@@ -27,7 +27,7 @@ SmartyStudio\LaravelMenu\Providers\MenuServiceProvider::class,
 4. Publish the config file & run the migrations.
 
 ```bash
-php artisan vendor:publish --provider="SmartyStudio\LaravelMenu\Providers\MenuServiceProvider"
+php artisan vendor:publish --provider="SmartyStudio\LaravelMenu\MenuServiceProvider"
 ```
 
 5. Configure (optional) in `config/laravelmenu.php`:
@@ -171,7 +171,7 @@ $menuList = Menu::getByName('Admin');
 
 ### Customization of the menu
 
-You can edit the menu interface in `resources/views/vendor/smartystudio/laravelmenu/menu.blade.php`
+You can publish and edit the menu layout in `resources/views/vendor/smartystudio/laravelmenu/menu.blade.php`
 
 ## Change log
 
