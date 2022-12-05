@@ -1,0 +1,43 @@
+{
+  "name": "smartystudio/laravel-menu",
+  "description": "Drag and drop menu generator for Laravel.",
+  "keywords": [
+    "Laravel",
+    "Menu",
+    "Bootstrap",
+    "Builder"
+  ],
+  "authors": [
+    {
+      "name": "Smarty Studio MBN Ltd.",
+      "homepage": "https://smartystudio.net",
+      "email": "office@smartystudio.net"
+    },
+    {
+      "name": "Martin Nestorov",
+      "email": "m.nestorov@smartystudio.net",
+      "role": "Lead Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "illuminate/support": "5.* || 6.* || 7.* || 8.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SmartyStudio\\Menu\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "SmartyStudio\\Menu\\Providers\\MenuServiceProvider"
+      ],
+      "aliases": {
+        "Menu": "SmartyStudio\\Menu\\Facades\\Menu"
+      }
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
