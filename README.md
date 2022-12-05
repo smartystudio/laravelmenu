@@ -7,7 +7,7 @@ An admin interface for [Laravel](https://laravel.com) to easily add, edit or rem
 1. In your terminal:
 
 ```bash
-composer require smartystudio/laravel-menu
+composer require smartystudio/laravelmenu
 ```
 
 **_Step 2 & 3 are optional if you are using laravel 5.5_**
