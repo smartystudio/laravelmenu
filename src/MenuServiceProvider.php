@@ -15,21 +15,23 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Routes
         if (!$this->app->routesAreCached()) {
-            require  __DIR__ . '/../../routes/web.php';
+            include __DIR__ . '/routes/web.php';
         }
 
-        $this->loadViewsFrom(__DIR__ . '/../../../', 'smartystudio/laravelmenu');
+        // Loading migrations and views
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadViewsFrom(__DIR__ . '/resources/views/', 'laravelmenu');
+
+        // Publishing all the necessary configuration files
+        if ($this->app->runningInConsole()) {
+            $this->publishes([__DIR__ . '/config/laravelmenu.php'  => config_path('laravelmenu.php'),], 'config');
+        }
         
-        $this->publishes([__DIR__ . '/../../config/laravelmenu.php'  => config_path('laravelmenu.php'),], 'config');
-        $this->publishes([__DIR__ . '/../../resources/views' => resource_path('views/vendor/smartystudio/laravelmenu'),], 'views');
-        $this->publishes([__DIR__ . '/../../public' => public_path('vendor/smartystudio/laravelmenu'),], 'public');
-        $this->publishes([
-            __DIR__ . '/../../database/migrations/2017_08_11_073824_create_menus_table.php' => database_path('migrations/2017_08_11_073824_create_menus_table.php'),
-            __DIR__ . '/../../database/migrations/2017_08_11_074006_create_menu_items_table.php' => database_path('migrations/2017_08_11_074006_create_menu_items_table.php'),
-            __DIR__ . '/../../database/migrations/2019_01_05_293551_add_role_id_to_menu_items_table.php' => database_path('migrations/2019_01_05_293551_add_role_id_to_menu_items_table.php'),
-            __DIR__ . '/../../database/migrations/2022_07_06_000123_add_class_to_menu_table.php' => database_path('migrations/2022_07_15_000123_add_class_to_menu_table.php'),
-        ], 'migrations');
+        // Publish all the migrations and assets (migrations, seeders, lang, views, assets)
+        $this->publishes([__DIR__ . '/database/migrations/' => database_path('migrations')], 'migrations');
+        $this->publishes([__DIR__ . '/resources/views' => resource_path('views/vendor/smartystudio/laravelmenu'),], 'views');
     }
 
     /**
@@ -43,21 +45,9 @@ class MenuServiceProvider extends ServiceProvider
             return new Menu();
         });
 
+        // Register LaravelMenu helper class
+        $this->app->singleton('menu', 'SmartyStudio\LaravelMenu\Helpers\Menu');
+
         $this->app->make('SmartyStudio\LaravelMenu\Http\Controllers\MenuController');
-        $this->mergeConfigFrom(__DIR__ . '/../../config/laravelmenu.php', 'laravelmenu');
-    }
-
-    protected function migrationExists($mgr)
-    {
-        $path = database_path('migrations/');
-        $files = scandir($path);
-        $pos = false;
-        
-        foreach ($files as &$value) {
-            $pos = strpos($value, $mgr);
-            if ($pos !== false) return true;
-        }
-
-        return false;
     }
 }
